@@ -23,5 +23,5 @@ from work_in_file import *
 while True:
     clear()
     print_instructions()
-    choose(input("Введите команду (1 2 3 или 4)"))
-    input("Введите enter чтобы продолжить")
+    choose(input("Введите команду (1 2 3 4 5 или 6): "))
+    input("Введите enter чтобы продолжить...")

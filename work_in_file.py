@@ -31,13 +31,13 @@ def delete_data(name):
                 f.write(line)
         print("Данные успешно удалены из файла")
 
-def change_data(old_name):
-    new_name = input("Введите новые данные о пользователе: ")
-    with open('data.txt', 'r+', encoding='utf-8') as f:
+def change_data(old, new):
+    with open('data.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
+    with open('data.txt', 'w', encoding='utf-8') as f:
         for line in lines:
-            if old_name in lines:
-                line = line.replace(old_name, new_name)
+            if old in line:
+                line = line.replace(old, new)
             f.write(line)
         print("Данные успешно изменены") # не получается вывести новое имя
         
@@ -46,6 +46,9 @@ def choose(choice):
     if choice == '1': return write(input("Введите ваши данные. Пример: фамилия имя отчество номер телефона "))
     if choice == "2": return read_all()
     if choice == "3": return get_by_name(input("Введите имя или фамилию пользователя, данные которого необходимо вывести в терминал: "))
-    if choice == "4": return delete_data(input("Введите имя или фамилию пользователя, данные которого необходимо удалить: "))
-    if choice == "5": return change_data(input("Введите имя или фамилию пользователя, данные которого необходимо изменить: "))
+    if choice == "4": return delete_data(input("Введите ФИО пользователя, данные которого нужно удалить: "))
+    if choice == "5": 
+        old_name = input("Введите ФИО пользователя для изменения данных: ")
+        new_name = input("Введите заново новые данные о пользователе: ")
+        return change_data(old_name, new_name)
     if choice == "6": exit()
